@@ -36,6 +36,13 @@ export default function SignupPage() {
     const { data, error: signUpError } = await supabase.auth.signUp({
       email: form.email,
       password: form.password,
+      options: {
+        data: {
+          full_name:     form.fullName.trim(),
+          employer_code: form.employerCode.trim().toUpperCase(),
+          emp_code:      form.empCode.trim(),
+        }
+      }
     })
 
     if (signUpError) {
@@ -50,19 +57,9 @@ export default function SignupPage() {
       return
     }
 
-    const { error: rpcError } = await supabase.rpc('register_employee', {
-      p_employer_code: form.employerCode.trim().toUpperCase(),
-      p_emp_code:      form.empCode.trim(),
-      p_full_name:     form.fullName.trim(),
-    })
-
-    if (rpcError) {
-      // Roll back the auth session so the user can try again cleanly.
-      await supabase.auth.signOut()
-      setError(rpcError.message)
-      setLoading(false)
-      return
-    }
+    // Note: The profile, wallet, and initial credit are now handled 
+    // automatically by a database trigger on auth.users for atomicity.
+    // No more orphan users!
 
     router.push('/')
     router.refresh()
