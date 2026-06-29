@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { rupees } from '@/lib/format'
 import type { OrderStatus } from '@/types/db'
+import ManageTab from './ManageTab'
 
 const STATUS_LABELS: Record<string, string> = {
   ALL:       'All statuses',
@@ -55,7 +56,7 @@ function monthRange(ym: string) {
 
 export default function AdminClient() {
   const supabase = useMemo(() => createClient(), [])
-  const [tab, setTab]                   = useState<'orders' | 'billing'>('orders')
+  const [tab, setTab]                   = useState<'orders' | 'billing' | 'manage'>('orders')
   const [statusFilter, setStatusFilter] = useState('ALL')
   const [selectedMonth, setSelectedMonth] = useState(currentMonth)
   const [orders, setOrders]             = useState<AdminOrder[]>([])
@@ -128,7 +129,7 @@ export default function AdminClient() {
 
       {/* Tab nav */}
       <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-6 w-fit">
-        {(['orders', 'billing'] as const).map(t => (
+        {(['orders', 'billing', 'manage'] as const).map(t => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -138,7 +139,7 @@ export default function AdminClient() {
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
-            {t === 'orders' ? 'All Orders' : 'Month-end Billing'}
+            {t === 'orders' ? 'All Orders' : t === 'billing' ? 'Month-end Billing' : 'Manage'}
           </button>
         ))}
       </div>
@@ -234,6 +235,9 @@ export default function AdminClient() {
           )}
         </section>
       )}
+
+      {/* ── Manage ── */}
+      {tab === 'manage' && <ManageTab />}
 
       {/* ── Month-end Billing ── */}
       {tab === 'billing' && (

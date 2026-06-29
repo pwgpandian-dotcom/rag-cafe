@@ -1,4 +1,12 @@
 export type UserRole    = 'EMPLOYEE' | 'COUNTER' | 'ADMIN'
+
+export interface Employer {
+  id: string
+  name: string
+  employer_code: string
+  default_monthly_credit_paise: number
+  status: string
+}
 export type OutletKind  = 'FOOD' | 'JUICE' | 'COFFEE' | 'OTHER'
 export type VegType     = 'VEG' | 'NONVEG' | 'EGG'
 export type OrderStatus = 'PLACED' | 'PREPARING' | 'READY' | 'COLLECTED' | 'CANCELLED'
