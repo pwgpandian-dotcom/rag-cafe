@@ -163,13 +163,31 @@ export default function AdminClient() {
           </div>
 
           {ordersLoading ? (
-            <p className="text-sm text-gray-400 py-12 text-center">Loading…</p>
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden animate-pulse">
+              {[0, 1, 2, 3, 4].map(i => (
+                <div key={i} className="flex gap-4 px-4 py-3.5 border-b border-gray-50 last:border-0">
+                  <div className="h-4 w-14 bg-gray-100 rounded" />
+                  <div className="h-4 w-20 bg-gray-100 rounded" />
+                  <div className="h-4 w-24 bg-gray-100 rounded" />
+                  <div className="h-4 w-24 bg-gray-100 rounded" />
+                  <div className="h-4 w-8 bg-gray-100 rounded ml-auto" />
+                  <div className="h-4 w-16 bg-gray-100 rounded" />
+                  <div className="h-4 w-16 bg-gray-100 rounded-full" />
+                </div>
+              ))}
+            </div>
           ) : ordersError ? (
             <p className="text-sm text-red-500 bg-red-50 rounded-xl px-4 py-3 border border-red-100">
               {ordersError}
             </p>
           ) : displayed.length === 0 ? (
-            <p className="text-sm text-gray-400 py-12 text-center">No orders found.</p>
+            <div className="flex flex-col items-center justify-center py-16 gap-2 text-center">
+              <svg className="w-8 h-8 text-gray-200 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              <p className="text-sm font-medium text-gray-500">No orders found</p>
+              <p className="text-xs text-gray-400">Try a different status filter.</p>
+            </div>
           ) : (
             <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-x-auto">
               <table className="w-full text-sm">
@@ -231,13 +249,27 @@ export default function AdminClient() {
           </div>
 
           {billingLoading ? (
-            <p className="text-sm text-gray-400 py-12 text-center">Loading…</p>
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden animate-pulse">
+              {[0, 1, 2].map(i => (
+                <div key={i} className="flex gap-6 px-4 py-3.5 border-b border-gray-50 last:border-0">
+                  <div className="h-4 w-36 bg-gray-100 rounded" />
+                  <div className="h-4 w-12 bg-gray-100 rounded" />
+                  <div className="h-4 w-20 bg-gray-100 rounded ml-auto" />
+                </div>
+              ))}
+            </div>
           ) : billingError ? (
             <p className="text-sm text-red-500 bg-red-50 rounded-xl px-4 py-3 border border-red-100">
               {billingError}
             </p>
           ) : billing.length === 0 ? (
-            <p className="text-sm text-gray-400 py-12 text-center">No billing data for this period.</p>
+            <div className="flex flex-col items-center justify-center py-16 gap-2 text-center">
+              <svg className="w-8 h-8 text-gray-200 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+              </svg>
+              <p className="text-sm font-medium text-gray-500">No billing data for this period</p>
+              <p className="text-xs text-gray-400">Try selecting a different month.</p>
+            </div>
           ) : (
             <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-x-auto">
               <table className="w-full text-sm">

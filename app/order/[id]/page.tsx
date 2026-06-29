@@ -43,8 +43,17 @@ export default function OrderSuccessPage({ params }: { params: { id: string } })
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-[70vh]">
-        <div className="w-6 h-6 border-2 border-brand border-t-transparent rounded-full animate-spin" />
+      <div className="px-4 py-8 flex flex-col items-center animate-pulse">
+        <div className="w-20 h-20 rounded-full bg-gray-100 mb-4" />
+        <div className="h-7 w-36 bg-gray-100 rounded-lg mb-2" />
+        <div className="h-4 w-24 bg-gray-100 rounded mb-1" />
+        <div className="h-4 w-20 bg-gray-100 rounded mb-5" />
+        <div className="h-6 w-28 bg-gray-100 rounded-full mb-7" />
+        <div className="w-full max-w-xs bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+          <div className="h-3 w-24 bg-gray-100 rounded mx-auto mb-4" />
+          <div className="h-16 w-32 bg-gray-100 rounded mx-auto mb-6" />
+          <div className="w-40 h-40 bg-gray-100 rounded-lg mx-auto" />
+        </div>
       </div>
     )
   }
@@ -78,13 +87,13 @@ export default function OrderSuccessPage({ params }: { params: { id: string } })
   return (
     <div className="px-4 py-8 flex flex-col items-center">
       {/* Success check */}
-      <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4 shadow-sm">
-        <svg className="w-9 h-9 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+      <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-5 shadow-sm">
+        <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
         </svg>
       </div>
 
-      <h1 className="text-2xl font-bold text-gray-900 mb-1">Order placed!</h1>
+      <h1 className="font-display text-2xl font-bold text-gray-900 mb-1">Order placed!</h1>
       <p className="text-sm text-gray-400 mb-0.5">Order #{order.order_no}</p>
       <p className="text-sm font-semibold text-gray-700 mb-5">{rupees(order.total_paise)}</p>
 
@@ -97,7 +106,7 @@ export default function OrderSuccessPage({ params }: { params: { id: string } })
         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
           Show at counter
         </p>
-        <p className="text-6xl font-black text-gray-900 tracking-widest mb-6">
+        <p className="font-display text-7xl font-black text-brand tracking-widest mb-6">
           {order.token}
         </p>
         <div className="flex justify-center">
@@ -105,7 +114,7 @@ export default function OrderSuccessPage({ params }: { params: { id: string } })
             value={order.token}
             size={160}
             bgColor="#ffffff"
-            fgColor="#111827"
+            fgColor="#015F2A"
             level="M"
             style={{ borderRadius: 8 }}
           />

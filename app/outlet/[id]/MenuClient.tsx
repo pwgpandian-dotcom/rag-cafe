@@ -45,9 +45,15 @@ export default function MenuClient({ outlet, items }: Props) {
       <h1 className="text-xl font-semibold text-gray-900 mb-5">{outlet.name}</h1>
 
       {items.length === 0 ? (
-        <p className="text-center text-gray-400 text-sm mt-12">
-          Nothing available right now.
-        </p>
+        <div className="flex flex-col items-center justify-center h-[40vh] gap-2 text-center px-8">
+          <div className="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center mb-1">
+            <svg className="w-7 h-7 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+            </svg>
+          </div>
+          <p className="font-semibold text-gray-700">Nothing on the menu right now</p>
+          <p className="text-sm text-gray-400">Check back soon — items are updated regularly.</p>
+        </div>
       ) : (
         <div className="space-y-3">
           {items.map(item => {
