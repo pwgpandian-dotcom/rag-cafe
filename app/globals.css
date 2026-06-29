@@ -2,7 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* ---- Brand green ---- */
+  --green-900: #013D1C;
+  --green-800: #014A22;
+  --green-700: #015F2A;
+  --green-600: #1B6F3B;
+  --green-500: #2E8B4F;
+  --green-300: #9BCBAA;
+  --green-100: #E4F2E9;
+  --green-50:  #F2F9F5;
+
+  /* ---- Amber accent ---- */
+  --amber-600: #C77700;
+  --amber-500: #F59E0B;
+  --amber-100: #FEF3C7;
+
+  /* ---- Neutrals ---- */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F7F8F7;
+  --neutral-100: #EFF1EF;
+  --neutral-200: #E2E5E2;
+  --neutral-300: #CBD0CB;
+  --neutral-400: #9AA29A;
+  --neutral-500: #6B746B;
+  --neutral-600: #4C544C;
+  --neutral-700: #343A34;
+  --neutral-800: #1F231F;
+  --neutral-900: #0E110E;
+
+  /* ---- Status / semantic ---- */
+  --success-500: #16A34A;
+  --warning-500: #F59E0B;
+  --danger-500:  #DC2626;
+  --info-500:    #2563EB;
+  --veg:         #16A34A;
+  --nonveg:      #B91C1C;
+
+  /* ---- Semantic aliases ---- */
+  --bg-canvas:         var(--neutral-50);
+  --bg-surface:        var(--neutral-0);
+  --bg-surface-sunken: var(--green-50);
+  --bg-brand:          var(--green-700);
+  --bg-brand-subtle:   var(--green-100);
+  --bg-accent:         var(--amber-500);
+
+  --fg-primary:   var(--neutral-900);
+  --fg-secondary: var(--neutral-600);
+  --fg-muted:     var(--neutral-400);
+  --fg-on-brand:  var(--neutral-0);
+  --fg-link:      var(--green-500);
+
+  --border-default: var(--neutral-200);
+  --border-strong:  var(--neutral-300);
+  --border-focus:   var(--green-500);
+
+  /* ---- Order status ---- */
+  --status-placed:    var(--info-500);
+  --status-accepted:  var(--green-600);
+  --status-preparing: var(--warning-500);
+  --status-ready:     var(--green-700);
+  --status-completed: var(--success-500);
+  --status-rejected:  var(--danger-500);
+
+  /* ---- Radius ---- */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+}
+
 body {
-  background: #f9fafb;
-  color: #111827;
+  background: var(--bg-canvas);
+  color: var(--fg-primary);
 }

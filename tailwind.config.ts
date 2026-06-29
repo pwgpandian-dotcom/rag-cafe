@@ -9,21 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
         brand: {
-          DEFAULT: '#0E4D3A',
-          600:     '#0c4434',
-          700:     '#09382b',
+          DEFAULT: 'var(--green-700)',  // logo / brand primary
+          600: 'var(--green-800)',      // hover on brand surfaces
+          700: 'var(--green-900)',      // pressed / active
         },
         gold: {
-          DEFAULT: '#E8B84B',
-          50:      '#fdf8e8',
-          600:     '#c99b2d',
+          DEFAULT: 'var(--amber-500)',  // accent fills, ratings
+          50: 'var(--amber-100)',       // highlight backgrounds
+          600: 'var(--amber-600)',      // amber text (a11y safe on white)
         },
       },
       fontFamily: {
-        sans: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
+        sans:    ['var(--font-inter)',         'Inter', '-apple-system', '"Segoe UI"', 'Roboto', '"Noto Sans"', 'sans-serif'],
+        display: ['var(--font-fraunces)',      'Georgia', 'serif'],
+        mono:    ['var(--font-ibm-plex-mono)', '"IBM Plex Mono"', 'monospace'],
       },
     },
   },

@@ -1,18 +1,31 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
-import './globals.css'
-import { CartProvider } from '@/lib/cart'
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-jakarta',
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800'],
-})
+import { Inter, Fraunces, IBM_Plex_Mono } from 'next/font/google'
 import { createClient } from '@/lib/supabase/server'
 import AppHeader from '@/components/AppHeader'
 import BottomNav from '@/components/BottomNav'
 import CounterHeader from '@/components/CounterHeader'
+import { CartProvider } from '@/lib/cart'
+import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  weight: ['400', '700', '900'],
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-ibm-plex-mono',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
 
 export const metadata: Metadata = {
   title: 'RagCafe',
@@ -52,7 +65,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en" className={jakarta.variable}>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${ibmPlexMono.variable}`}>
       <body className="antialiased">
         <CartProvider>
           {user && !isCounter && <AppHeader balance={balance} userName={userName} />}
